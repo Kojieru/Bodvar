@@ -1,24 +1,146 @@
-
+<!DOCTYPE html>
 <html>
-    <h1>
-        Hey, I'm Bodvar AKA KOJI AKA KOJI PRIME
-    </h1>
-    <body>
-        <h2>About me</h2>
-        <p>
-            Pretty much a 19 yo games enjoyer with a Caffeine addiction :P.
-        </p>
-        <h2>Socials</h2>
-        <p>
-            Contact me at discord: koji_rr or instagram: thekatarsguy.
+<head>
+    <title>The View From Halfway Down</title>
+    <style>
+        body {
+            background-color: black !important;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+        }
+        
+        #poem {
+            position: absolute;
+            color: #0f0;
+            text-align: center;
+            width: 100%;
+            animation: riseAndFade 30s linear forwards;
+            white-space: pre-line;
+            font-size: 20px;
+            line-height: 1.5;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100vh;
+            max-width: 600px;
+            text-shadow: 0 0 5px #0f03;
+        }
 
-              </p>
-        <h2>Yapping</h2>
-        <p>
-            I don't why i made this site, i found people who have lack of faith disturbing.
-            People think i'm aggresive but im so coquotte and smol and petite.
-            Teach me a word in ur language (don't approach if you are jizani).
-            
-        </p>
-    </body>
+        #choice-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: none;
+            z-index: 1000;
+        }
+
+        #question {
+            color: #ff0000;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .choice-btn {
+            background: none;
+            border: 1px solid;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #good-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff69b4;
+            font-size: 32px;
+            text-shadow: 0 0 15px #ff69b4;
+        }
+
+        @keyframes riseAndFade {
+            0% { transform: translate(-50%, 0); opacity: 1; }
+            100% { transform: translate(-50%, -200vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="poem">The View From Halfway Down
+
+The weak breeze whispers nothing
+the water screams sublime.
+His feet shift, teeter-totter
+deep breaths, stand back, it’s time.
+
+Toes untouch the overpass
+soon he’s water-bound.
+Eyes locked shut but peek to see
+the view from halfway down.
+
+A little wind, a summer sun
+a river rich and regal.
+A flood of fond endorphins
+brings a calm that knows no equal.
+
+You’re flying now, you see things
+much more clear than from the ground.
+It's all okay, or it would be
+were you not now halfway down.
+
+Thrash to break from gravity
+what now could slow the drop?
+All I’d give for toes to touch
+the safety back at top.
+
+But this is it, the deed is done
+silence drowns the sound.
+Before I leaped I should've seen
+the view from halfway down.
+
+I really should’ve thought about
+the view from halfway down.
+I wish I could've known about
+the view from halfway down—</div>
+
+    <div id="choice-container">
+        <div id="question">YOU SURE YOU WANNA DO IT?</div>
+        <button id="yes-btn" class="choice-btn" style="border-color: red">YES</button>
+        <button id="no-btn" class="choice-btn" style="border-color: green">NO</button>
+    </div>
+
+    <div id="good-message">GOOD BOY/GIRL</div>
+
+    <script>
+        // Test version with 5-second animation
+        setTimeout(() => {
+            document.getElementById('choice-container').style.display = 'block';
+            document.getElementById('poem').style.display = 'none';
+        }, 5000); // 5 seconds for testing
+
+        // YES button handler
+        document.getElementById('yes-btn').addEventListener('click', function() {
+            const maxX = window.innerWidth - this.offsetWidth;
+            const maxY = window.innerHeight - this.offsetHeight;
+            this.style.position = 'fixed';
+            this.style.left = Math.random() * maxX + 'px';
+            this.style.top = Math.random() * maxY + 'px';
+        });
+
+        // NO button handler
+        document.getElementById('no-btn').addEventListener('click', () => {
+            document.getElementById('choice-container').style.display = 'none';
+            document.getElementById('good-message').style.display = 'block';
+        });
+
+        // Force black background
+        document.body.style.backgroundColor = 'black';
+    </script>
+</body>
 </html>
